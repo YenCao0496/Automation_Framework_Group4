@@ -15,7 +15,7 @@ import core.utilities.EvnConfig;
 
 import java.net.URL;
 public class WebDriverFactory {
-	private WebDriver webDriver;
+	protected WebDriver webDriver;
 
     public WebDriverFactory() {
         this.webDriver = setWebDriver();
