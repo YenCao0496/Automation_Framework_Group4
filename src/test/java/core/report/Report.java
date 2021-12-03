@@ -28,23 +28,23 @@ public class Report {
 	}
 
 	public synchronized void createTestCaseName(String message) {
-		extent.createTest(message);
+		test = extent.createTest(message);
 	}
 
-	public synchronized static void logInfo(String message) {
+	public synchronized void logInfo(String message) {
+		test = extent.createTest(message);
 		test.log(Status.INFO, message);
 	}
 
 	public synchronized static void saveReport() {
 		extent.flush();
 	}
-	
+
 	public static String capture(WebDriver driver, String folderName) throws IOException {
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		File Dest = new File(folderName + System.currentTimeMillis()
-		+ ".png");
+		File Dest = new File(folderName + System.currentTimeMillis() + ".png");
 		String errflpath = Dest.getAbsolutePath();
 		FileUtils.copyFile(scrFile, Dest);
 		return errflpath;
-		}
+	}
 }
