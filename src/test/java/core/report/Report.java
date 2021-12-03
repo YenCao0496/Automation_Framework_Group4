@@ -31,9 +31,10 @@ public class Report {
 		test = extent.createTest(message);
 	}
 
-	public synchronized void logInfo(String message) {
+	public synchronized void logInfo(WebDriver driver, String folderName, String message) throws IOException {
 		test = extent.createTest(message);
 		test.log(Status.INFO, message);
+		test.addScreenCaptureFromPath(capture(driver, folderName));
 	}
 
 	public synchronized static void saveReport() {
@@ -42,7 +43,7 @@ public class Report {
 
 	public static String capture(WebDriver driver, String folderName) throws IOException {
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		File Dest = new File(folderName + System.currentTimeMillis() + ".png");
+		File Dest = new File(System.getProperty("user.dir") + File.separator + folderName + File.separator + System.currentTimeMillis() + ".png");
 		String errflpath = Dest.getAbsolutePath();
 		FileUtils.copyFile(scrFile, Dest);
 		return errflpath;

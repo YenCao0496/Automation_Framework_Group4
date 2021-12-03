@@ -12,6 +12,6 @@ public class Constant {
 	public static String PASSWORD = "Mien@12345";
 	public static String BOOK_GitPocketGuide = "Git Pocket Guide";
 	public static String reportPath = System.getProperty("user.dir") + File.separator +"Result"+File.separator + "TestExecutionReport.html";
-	public static String captureImageFolder = System.getProperty("user.dir") + File.separator +"Result";
+	public static String captureImageFolder = "Result";
 
 }
