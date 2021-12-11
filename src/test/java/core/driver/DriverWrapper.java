@@ -5,11 +5,12 @@ import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
-import org.testng.log4testng.Logger;
+
+import core.log.Log;
 
 public class DriverWrapper {
-	protected static Logger logger = Logger.getLogger(DriverWrapper.class);
-	
+	 //protected static Logger logger = Logger.getLogger(DriverWrapper.class);
+	static Log logger ;
 	public static WebDriver getWebDriver( ) {
 		WebDriverFactory driver = new WebDriverFactory();
 		return driver.getDriver();
@@ -20,12 +21,13 @@ public class DriverWrapper {
 	}
 	
 	public static String getCurrentUrl() {
-		logger.info("Get current url ");
+		logger.info("Get current url");
+		//logger.info("Get current url ");
 		String url = null;
 		try {
 			url = getWebDriver().getCurrentUrl();
 		} catch (Exception e) {
-			logger.error("Error: Cannot get current URL due to '" + e.getMessage() + "'");
+			logger.info("Error: Cannot get current URL due to '" + e.getMessage() + "'");
 		}
 		return url;
 	}
@@ -36,7 +38,7 @@ public class DriverWrapper {
 		try {
 			title = getWebDriver().getTitle();
 		} catch (Exception e) {
-			logger.error("Error: Cannot get title due to '" + e.getMessage() + "'");
+			logger.info("Error: Cannot get title due to '" + e.getMessage() + "'");
 		}
 		return title;
 	}
@@ -47,7 +49,7 @@ public class DriverWrapper {
 		try {
 			pageSource = getWebDriver().getPageSource();
 		} catch (Exception e) {
-			logger.error("Error: Cannot get page source due to '" + e.getMessage() + "'");
+			logger.info("Error: Cannot get page source due to '" + e.getMessage() + "'");
 		}
 		return pageSource;
 	}
@@ -57,7 +59,7 @@ public class DriverWrapper {
 		try {
 			getWebDriver().close();
 		} catch (Exception e) {
-			logger.error("Error: Cannot close current page due to '" + e.getMessage() + "'");
+			logger.info("Error: Cannot close current page due to '" + e.getMessage() + "'");
 		}
 	}
 	
@@ -66,7 +68,7 @@ public class DriverWrapper {
 		try {
 			getWebDriver().quit();
 		} catch (Exception e) {
-			logger.error("Error: Cannot quit due to '" + e.getMessage() + "'");
+			logger.info("Error: Cannot quit due to '" + e.getMessage() + "'");
 		}
 	}
 	
@@ -74,7 +76,7 @@ public class DriverWrapper {
 		try {
 			return getWebDriver().getWindowHandle();
 		} catch (Exception e) {
-			logger.error("Error: Cannot get Window handle due to '" + e.getMessage() + "'");
+			logger.info("Error: Cannot get Window handle due to '" + e.getMessage() + "'");
 			return null;
 		}
 	}
@@ -83,7 +85,7 @@ public class DriverWrapper {
 		try {
 			return new  ArrayList<String>(getWebDriver().getWindowHandles());
 		} catch (Exception e) {
-			logger.error("Error: Cannot get Window handle due to '" + e.getMessage() + "'");
+			logger.info("Error: Cannot get Window handle due to '" + e.getMessage() + "'");
 			return null;
 		}
 	}
@@ -127,7 +129,7 @@ public class DriverWrapper {
 		try {
 			return getWebDriver().manage();
 		} catch (Exception e) {
-			logger.error("Error: Cannot navigate due to '" + e.getMessage() + "'");
+			logger.info("Error: Cannot navigate due to '" + e.getMessage() + "'");
 			return null;
 		}
 	}
@@ -136,7 +138,7 @@ public class DriverWrapper {
 		try {
 			getWebDriver().manage().window().maximize();
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.info(e.getMessage());
 		}
 	}
 }

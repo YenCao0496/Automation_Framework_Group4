@@ -18,11 +18,11 @@ public class Report {
 	private static ExtentHtmlReporter htmlReporter;
 	private static ExtentTest test;
 
-	public Report(String reportName) {
+	public Report( String reportName) {
 		// initialize ExtentReports and attach the HtmlReporter
 		extent = ExtentManager.createInstance(reportName);
 		// initialize the HtmlReporter
-		htmlReporter = new ExtentHtmlReporter(reportName);
+		htmlReporter = new ExtentHtmlReporter( reportName);
 		// attach only HtmlReporter
 		extent.attachReporter(htmlReporter);
 	}
